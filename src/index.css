@@ -1,0 +1,86 @@
+/* 1. IMPORT PREMIUM FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@100;300;400;600&display=swap');
+
+/* 2. TAILWIND V4 CORE */
+@import "tailwindcss";
+
+/* 3. LUXURY THEME CONFIGURATION */
+@theme {
+  --color-luxury-gold: #D4AF37;
+  --color-antique-gold: #856404;
+  --color-obsidian: #080808;
+  --color-champagne: #F7E7CE;
+  
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Montserrat", sans-serif;
+
+  /* Custom Animations */
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+/* 4. GLOBAL LUXURY STYLES */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #080808; /* obsidian */
+  }
+
+  body {
+    @apply bg-obsidian text-white font-sans antialiased;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  /* Premium Text Selection */
+  ::selection {
+    @apply bg-luxury-gold text-black;
+  }
+
+  /* Luxury Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #080808;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #856404, #D4AF37);
+    border-radius: 10px;
+  }
+}
+
+/* 5. CUSTOM CINEMATIC UTILITIES */
+@layer utilities {
+  /* Metallic Gold Text Gradient */
+  .gold-gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(to bottom, #F7E7CE, #D4AF37, #856404);
+  }
+
+  /* Glassmorphism Card */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+  }
+
+  /* Subtle Gold Glow for Jewellery Images */
+  .gold-glow {
+    filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.3));
+  }
+
+  /* Cinematic Section Overlay */
+  .vignette-overlay {
+    background: radial-gradient(circle, transparent 20%, rgba(8, 8, 8, 0.8) 100%);
+  }
+}
+
+/* 6. FIX FOR NON-WRAPPED TEXT IN SERIF */
+h1, h2, h3 {
+  @apply font-serif font-light tracking-tight;
+}
